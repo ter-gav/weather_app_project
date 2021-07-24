@@ -1,0 +1,143 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 30px;
+}
+
+h1,
+h2 {
+  font-size: 40px;
+  padding-top: 20px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: medium;
+  font-weight: normal;
+  padding-left: 2px;
+  padding-top: 10px;
+}
+img {
+  display: block;
+  margin: 0 auto;
+  width: 70px;
+}
+
+button {
+  margin: 5px;
+}
+
+hr {
+  margin-bottom: 30px;
+}
+
+.weather-box {
+  margin: 0 auto;
+  width: 850px;
+  padding: 70px;
+  padding-right: 0px;
+  padding-bottom: 10px;
+  box-sizing: content-box;
+  box-shadow: 5px 5px 5px rgb(56, 54, 54, 0.7);
+  border-radius: 20px;
+  background: radial-gradient(
+    circle at 7.4% 45.1%,
+    rgb(236, 206, 251) 0%,
+    rgb(205, 237, 246) 45.1%,
+    rgb(227, 251, 252) 78.4%,
+    rgb(230, 247, 235) 90%
+  );
+}
+
+.form-control {
+  max-width: 300px;
+  display: inline;
+  padding-right: 5px;
+}
+
+.current-city {
+  position: relative;
+  top: 40px;
+  left: 10px;
+}
+.weather-details {
+  position: relative;
+  top: -120px;
+  left: 65%;
+  border: none;
+  font-size: 500;
+  background-color: transparent;
+}
+
+.list-group-item {
+  border: none;
+  background: none;
+}
+
+.main-image {
+  width: 120px;
+  position: relative;
+  right: 120px;
+  top: -25px;
+  padding: 0;
+}
+
+.forecast {
+  position: relative;
+  left: -40px;
+  top: -60px;
+  text-align: center;
+  padding: 0px 10px;
+}
+
+.forecast .upcoming-days {
+  padding: 8px;
+}
+
+.max-temperature {
+  font-weight: bold;
+}
+
+.current-temp {
+  text-align: center;
+  position: relative;
+  right: 12px;
+  top: -20px;
+}
+
+.current-button {
+  background: #60a0b0;
+  color: #fff;
+  border: none;
+}
+
+.current-button:hover {
+  background: #30859b;
+  color: #fff;
+  box-shadow: 2px 2px 2px rgb(56, 54, 54, 0.7);
+}
+
+.search-button {
+  background: #29a19c;
+  border: none;
+}
+
+.search-button:hover {
+  background: #147470;
+  color: #fff;
+  box-shadow: 2px 2px 2px rgb(56, 54, 54, 0.7);
+}
+
+.current-city .col-3 {
+  box-sizing: content-box;
+}
+
+.degrees {
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  top: -15px;
+}
+
+.degrees .temp-type {
+  text-decoration: none;
+}

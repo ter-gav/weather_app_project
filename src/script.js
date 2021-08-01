@@ -98,6 +98,15 @@ function showTemperature(response) {
     event.preventDefault();
     let celsius = document.querySelector("#current-city-temp");
     celsius.innerHTML = currentTemperature;
+
+    fahrenheitTemp.classList.remove("active");
+    celsiusTemp.classList.add("active");
+
+    let forecastMax = document.querySelector(".max-temperature");
+    forecastMax.innerHTML = `${Math.round(maxTemperature)}º`;
+
+    let forecastMin = document.querySelector(".min-temperature");
+    forecastMin.innerHTML = `${Math.round(minTemperature)}º`;
   }
   let celsiusTemp = document.querySelector("#celsius-link");
   celsiusTemp.addEventListener("click", showCelsius);
@@ -106,6 +115,9 @@ function showTemperature(response) {
     event.preventDefault();
     let temperature = document.querySelector("#current-city-temp");
     temperature.innerHTML = Math.round((currentTemperature * 9) / 5 + 32);
+
+    celsiusTemp.classList.remove("active");
+    fahrenheitTemp.classList.add("active");
 
     let forecastMax = document.querySelector(".max-temperature");
     forecastMax.innerHTML = `${Math.round((maxTemperature * 9) / 5 + 32)}º`;

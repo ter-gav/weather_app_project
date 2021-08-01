@@ -32,7 +32,7 @@ hr {
 
 .weather-box {
   margin: 0 auto;
-  width: 850px;
+  max-width: 850px;
   padding: 70px;
   padding-right: 0px;
   padding-bottom: 10px;
@@ -149,4 +149,12 @@ hr {
 
 #weather-description {
   text-transform: capitalize;
+}
+
+.degrees .active {
+  color: black;
+}
+.degrees .active:hover {
+  text-decoration: none;
+  cursor: default;
 }

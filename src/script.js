@@ -131,9 +131,13 @@ function showTemperature(response) {
 }
 
 function searchCity(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  if (city != "") {
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
-  axios.get(apiUrl).then(showTemperature);
+    axios.get(apiUrl).then(showTemperature);
+  } else {
+    alert("Hi there! Enter a city please");
+  }
 }
 
 function handleSubmit(event) {

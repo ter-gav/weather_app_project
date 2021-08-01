@@ -50,6 +50,17 @@ function showTemperature(response) {
   let minTemperature = Math.round(response.data.main.temp_min);
   document.querySelector("#min-temp-today").innerHTML = `${minTemperature}º`;
 
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
+
   function formatSunrise(date) {
     let sunriseDate = new Date(date * 1000);
     let sunriseHours = sunriseDate.getHours();

@@ -146,3 +146,7 @@ hr {
   padding: 10px;
   text-align: center;
 }
+
+#weather-description {
+  text-transform: capitalize;
+}

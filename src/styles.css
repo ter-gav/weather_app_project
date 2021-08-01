@@ -9,8 +9,13 @@ h2 {
   padding-top: 20px;
   font-weight: bold;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-h3 {
+li {
   font-size: medium;
   font-weight: normal;
   padding-left: 2px;
@@ -147,7 +152,7 @@ hr {
   text-align: center;
 }
 
-#weather-description {
+li::first-letter {
   text-transform: capitalize;
 }
 

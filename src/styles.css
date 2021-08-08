@@ -44,12 +44,10 @@ hr {
   box-sizing: content-box;
   box-shadow: 5px 5px 5px rgb(56, 54, 54, 0.7);
   border-radius: 20px;
-  background: radial-gradient(
-    circle at 7.4% 45.1%,
-    rgb(236, 206, 251) 0%,
-    rgb(205, 237, 246) 45.1%,
-    rgb(227, 251, 252) 78.4%,
-    rgb(230, 247, 235) 90%
+  background: linear-gradient(
+    68.6deg,
+    rgb(252, 165, 241) 1.8%,
+    rgb(181, 255, 255) 100.5%
   );
 }
 
@@ -150,12 +148,4 @@ hr {
 
 li::first-letter {
   text-transform: capitalize;
-}
-
-.degrees .active {
-  color: black;
-}
-.degrees .active:hover {
-  text-decoration: none;
-  cursor: default;
 }

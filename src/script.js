@@ -1,5 +1,3 @@
-let apiKey = "f408b458699300138b2f973b8c6a1c4a";
-
 function getCurrentDay(date) {
   let days = [
     "Sunday",
@@ -23,9 +21,6 @@ function getCurrentDay(date) {
   }
   return `${currentDay} ${currentHour}:${currentMinutes}`;
 }
-let dateElement = document.querySelector("#current-day");
-let currentTime = new Date();
-dateElement.innerHTML = getCurrentDay(currentTime);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -136,41 +131,6 @@ function showTemperature(response) {
   let sunset = response.data.sys.sunset;
   formatSunset(sunset);
 
-  function showCelsius(event) {
-    event.preventDefault();
-    let celsius = document.querySelector("#current-city-temp");
-    celsius.innerHTML = currentTemperature;
-
-    fahrenheitTemp.classList.remove("active");
-    celsiusTemp.classList.add("active");
-
-    let forecastMax = document.querySelector(".max-temperature");
-    forecastMax.innerHTML = `${Math.round(maxTemperature)}º`;
-
-    let forecastMin = document.querySelector(".min-temperature");
-    forecastMin.innerHTML = `${Math.round(minTemperature)}º`;
-  }
-  let celsiusTemp = document.querySelector("#celsius-link");
-  celsiusTemp.addEventListener("click", showCelsius);
-
-  function showFahrenheit(event) {
-    event.preventDefault();
-    let temperature = document.querySelector("#current-city-temp");
-    temperature.innerHTML = Math.round((currentTemperature * 9) / 5 + 32);
-
-    celsiusTemp.classList.remove("active");
-    fahrenheitTemp.classList.add("active");
-
-    let forecastMax = document.querySelector(".max-temperature");
-    forecastMax.innerHTML = `${Math.round((maxTemperature * 9) / 5 + 32)}º`;
-
-    let forecastMin = document.querySelector(".min-temperature");
-    forecastMin.innerHTML = `${Math.round((minTemperature * 9) / 5 + 32)}º`;
-  }
-
-  let fahrenheitTemp = document.querySelector("#fahrenheit-link");
-  fahrenheitTemp.addEventListener("click", showFahrenheit);
-
   getForecast(response.data.coord);
 }
 
@@ -190,9 +150,6 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-let searchForm = document.querySelector("#search-city-form");
-searchForm.addEventListener("submit", handleSubmit);
-
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -206,6 +163,16 @@ function showLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
+let apiKey = "f408b458699300138b2f973b8c6a1c4a";
+
+let dateElement = document.querySelector("#current-day");
+let currentTime = new Date();
+dateElement.innerHTML = getCurrentDay(currentTime);
+
+let searchForm = document.querySelector("#search-city-form");
+searchForm.addEventListener("submit", handleSubmit);
+
 let currentLocation = document.querySelector("#current-button");
 currentLocation.addEventListener("click", showLocation);
 

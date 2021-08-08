@@ -27,25 +27,46 @@ let dateElement = document.querySelector("#current-day");
 let currentTime = new Date();
 dateElement.innerHTML = getCurrentDay(currentTime);
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#weather-forecast");
-  let forecastHTML = `<div class="row">`;
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-     <div class="weather-forecast-date">${day}</div>
-     <img src="images/partly-cloudy.png" alt="weather" />
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+     <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+     <img src="http://openweathermap.org/img/wn/${
+       forecastDay.weather[0].icon
+     }@2x.png" alt="weather" />
      <div class="weather-forecast-temperatures">
-       <span class="max-temperature">26º </span>
-       <span class="min-temperature">15º</span>
+       <span class="max-temperature">${Math.round(
+         forecastDay.temp.max
+       )}º </span>
+       <span class="min-temperature">${Math.round(forecastDay.temp.min)}º</span>
      </div>
      </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
@@ -149,6 +170,8 @@ function showTemperature(response) {
 
   let fahrenheitTemp = document.querySelector("#fahrenheit-link");
   fahrenheitTemp.addEventListener("click", showFahrenheit);
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -187,4 +210,3 @@ let currentLocation = document.querySelector("#current-button");
 currentLocation.addEventListener("click", showLocation);
 
 searchCity("Berlin");
-displayForecast();

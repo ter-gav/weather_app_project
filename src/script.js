@@ -27,6 +27,27 @@ let dateElement = document.querySelector("#current-day");
 let currentTime = new Date();
 dateElement.innerHTML = getCurrentDay(currentTime);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+     <div class="weather-forecast-date">${day}</div>
+     <img src="images/partly-cloudy.png" alt="weather" />
+     <div class="weather-forecast-temperatures">
+       <span class="max-temperature">26º </span>
+       <span class="min-temperature">15º</span>
+     </div>
+     </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   document.querySelector(".current-city h1").innerHTML = response.data.name;
 
@@ -166,3 +187,4 @@ let currentLocation = document.querySelector("#current-button");
 currentLocation.addEventListener("click", showLocation);
 
 searchCity("Berlin");
+displayForecast();
